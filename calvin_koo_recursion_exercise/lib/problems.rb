@@ -119,10 +119,25 @@ end
 #     3-dimensional array: [[['some data']]]
 def flatten(data)
     arr = []
-
     if !data.kind_of?(Array)
         return arr.push(data)
-    else
-        return arr.push(data[0]) + flatten(data)
     end
+    
+    data.each do |ele|
+        if !ele.kind_of?(Array)
+            arr.push(ele)
+        else
+            arr += flatten(ele)
+        end
+    end
+
+    arr
+
+    #iterate through data
+        #check to see if current ele is or is not an array
+            #if it isn't an array
+                #push into new array
+            #if it is an array
+                #want to call flatten and add it to new array (+=)
+    #return new array
 end
